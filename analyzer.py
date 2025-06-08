@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-import yaml, pathlib, ast, os, xml.etree.ElementTree as ET, sys
+import json, pathlib, ast, os, xml.etree.ElementTree as ET, sys
 
-model = yaml.safe_load(open("architecture.yaml"))
+# --- Modell laden von JSON statt YAML ---
+model = json.load(open("architecture.json"))
 layers_rules = {k:v['allowed'] for k,v in model['logical']['layers'].items()}
 comp_map = {c['folder']: c['layer'] for c in model['development']['components']}
 
